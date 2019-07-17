@@ -2,6 +2,7 @@
 
 # Feeds CRUD
 class FeedsController < ApplicationController
+  before_action :authenticate_user
   before_action :set_feed, only: %i[show update destroy]
 
   # GET /feeds
