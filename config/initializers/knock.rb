@@ -1,5 +1,11 @@
-Knock.setup do |config|
+# frozen_string_literal: true
 
+def fetch_public_key
+  jwks_raw = Net::HTTP.get URI("#{Rails.application.credentials.auth0[:domain]}.well-known/jwks.json")
+  Array(JSON.parse(jwks_raw)['keys']).first['x5c'].first
+end
+
+Knock.setup do |config|
   ## Expiration claim
   ## ----------------
   ##
@@ -9,7 +15,6 @@ Knock.setup do |config|
   ## Default:
   # config.token_lifetime = 1.day
 
-
   ## Audience claim
   ## --------------
   ##
@@ -17,7 +22,7 @@ Knock.setup do |config|
   ## is intended for.
   ##
   ## Default:
-  config.token_audience = -> { Rails.application.credentials.auth0[:client_id] }
+  config.token_audience = -> { Rails.application.credentials.auth0[:api_audience] }
 
   ## If using Auth0, uncomment the line below
   # config.token_audience = -> { Rails.application.secrets.auth0_client_id }
@@ -28,7 +33,7 @@ Knock.setup do |config|
   ## Configure the algorithm used to encode the token
   ##
   ## Default:
-  # config.token_signature_algorithm = 'HS256'
+  config.token_signature_algorithm = 'RS256'
 
   ## Signature key
   ## -------------
@@ -47,7 +52,7 @@ Knock.setup do |config|
   ## Configure the public key used to decode tokens, if required.
   ##
   ## Default:
-  # config.token_public_key = nil
+  config.token_public_key = OpenSSL::X509::Certificate.new(Base64.decode64(fetch_public_key)).public_key
 
   ## Exception Class
   ## ---------------

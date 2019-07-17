@@ -13,7 +13,7 @@ gem 'sqlite3'
 gem 'puma', '~> 3.11'
 # Linting and formatting
 gem 'rubocop'
-
+gem 'jwt'
 gem 'bcrypt', '~> 3.1.7'
 gem 'knock', '~> 2.0'
 
