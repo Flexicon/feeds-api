@@ -16,6 +16,7 @@ gem 'rubocop'
 gem 'jwt'
 gem 'bcrypt', '~> 3.1.7'
 gem 'knock', '~> 2.0'
+gem 'active_model_serializers'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'

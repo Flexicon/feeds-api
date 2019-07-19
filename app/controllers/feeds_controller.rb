@@ -7,7 +7,7 @@ class FeedsController < ApplicationController
 
   # GET /feeds
   def index
-    @feeds = Feed.all
+    @feeds = Feed.where(user: current_user.id).all
 
     render json: @feeds
   end
