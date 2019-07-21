@@ -7,32 +7,37 @@ class FeedsControllerTest < ActionDispatch::IntegrationTest
     @feed = feeds(:one)
   end
 
-  test 'should get index' do
+  test 'endpoint should require auth' do
     get feeds_url, as: :json
+    assert_response :unauthorized
+  end
+
+  test 'should get list of feeds for user' do
+    get feeds_url, as: :json, headers: make_test_user_auth_header
     assert_response :success
   end
 
   test 'should create feed' do
     assert_difference('Feed.count') do
-      post feeds_url, params: { feed: { name: @feed.name, url: @feed.url } }, as: :json
+      post feeds_url, params: { feed: { name: @feed.name, url: @feed.url } }, as: :json, headers: make_test_user_auth_header
     end
 
     assert_response 201
   end
 
   test 'should show feed' do
-    get feed_url(@feed), as: :json
+    get feed_url(@feed), as: :json, headers: make_test_user_auth_header
     assert_response :success
   end
 
   test 'should update feed' do
-    patch feed_url(@feed), params: { feed: { name: @feed.name, url: @feed.url } }, as: :json
+    patch feed_url(@feed), params: { feed: { name: @feed.name, url: @feed.url } }, as: :json, headers: make_test_user_auth_header
     assert_response 200
   end
 
   test 'should destroy feed' do
     assert_difference('Feed.count', -1) do
-      delete feed_url(@feed), as: :json
+      delete feed_url(@feed), as: :json, headers: make_test_user_auth_header
     end
 
     assert_response 204

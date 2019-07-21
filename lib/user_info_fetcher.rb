@@ -11,7 +11,7 @@ class UserInfoFetcher
   end
 
   def self.send_request(token)
-    uri = URI.parse("#{Rails.application.credentials.auth0[:domain]}userinfo")
+    uri = URI.parse("#{Rails.application.credentials[:auth0][:domain]}userinfo")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.get(uri.request_uri, authorization: "Bearer #{token}").body

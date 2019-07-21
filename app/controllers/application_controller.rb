@@ -6,9 +6,7 @@ class ApplicationController < ActionController::API
 
   private
 
-  # Disable this line for debugging Knock token verification you're debugging:
-  rescue_from ::JWT::DecodeError, with: :unauthorized_entity
-
+  # Stub for current_user magic method
   def current_user; end
 
   # Override of vendor Knock method in order to inject a CustomAuthToken
@@ -25,7 +23,8 @@ class ApplicationController < ActionController::API
           begin
             CustomAuthToken.new(token: token).entity_for(entity_class)
           rescue StandardError => e
-            throw e
+            puts e.message
+            throw e if Rails.env.development? # Throw this error when debugging
           end
         instance_variable_set(memoization_var_name, current)
       end
