@@ -23,7 +23,7 @@ class ApplicationController < ActionController::API
           begin
             CustomAuthToken.new(token: token).entity_for(entity_class)
           rescue StandardError => e
-            puts e.message
+            puts "Error while decoding token: #{e.message}"
             throw e if Rails.env.development? # Throw this error when debugging
           end
         instance_variable_set(memoization_var_name, current)
