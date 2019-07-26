@@ -2,6 +2,8 @@
 
 # Authorized user model, persisted on any auth request if not already in the system
 class User < ApplicationRecord
+  has_many :feeds
+
   def self.from_token_payload(payload, token)
     begin
       user = find payload['sub']

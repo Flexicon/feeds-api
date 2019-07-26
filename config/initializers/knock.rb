@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 def fetch_public_key
-  jwks_raw = Net::HTTP.get URI("#{Rails.application.credentials.auth0[:domain]}.well-known/jwks.json")
+  jwks_raw = Net::HTTP.get URI("#{Rails.application.credentials[:auth0][:domain]}.well-known/jwks.json")
   Array(JSON.parse(jwks_raw)['keys']).first['x5c'].first
 end
 
@@ -22,7 +22,7 @@ Knock.setup do |config|
   ## is intended for.
   ##
   ## Default:
-  config.token_audience = -> { Rails.application.credentials.auth0[:api_audience] }
+  config.token_audience = -> { Rails.application.credentials[:auth0][:api_audience] }
 
   ## If using Auth0, uncomment the line below
   # config.token_audience = -> { Rails.application.secrets.auth0_client_id }
@@ -41,7 +41,7 @@ Knock.setup do |config|
   ## Configure the key used to sign tokens.
   ##
   ## Default:
-  config.token_secret_signature_key = -> { Rails.application.credentials.auth0[:client_secret] }
+  # config.token_secret_signature_key = -> { Rails.application.credentials.auth0[:client_secret] }
 
   ## If using Auth0, uncomment the line below
   # config.token_secret_signature_key = -> { JWT.base64url_decode Rails.application.secrets.auth0_client_secret }

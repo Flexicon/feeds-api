@@ -12,10 +12,12 @@ gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Linting and formatting
-gem 'rubocop'
-gem 'jwt'
+gem 'active_model_serializers'
 gem 'bcrypt', '~> 3.1.7'
+gem 'jwt'
 gem 'knock', '~> 2.0'
+gem 'minitest-hooks'
+gem 'rubocop'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'

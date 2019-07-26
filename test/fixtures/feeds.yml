@@ -3,7 +3,9 @@
 one:
   url: https://www.reddit.com/r/news/.rss
   name: Reddit News
+  user_id: auth0|5d27985fd5dc270e1c113e8a
 
 two:
   url: https://reddit.statuspage.io/history.rss
   name: Reddit Status
+  user_id: auth0|5d27985fd5dc270e1c113e8a

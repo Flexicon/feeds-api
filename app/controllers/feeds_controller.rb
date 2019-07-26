@@ -7,7 +7,7 @@ class FeedsController < ApplicationController
 
   # GET /feeds
   def index
-    @feeds = Feed.all
+    @feeds = Feed.where(user: current_user.id).all
 
     render json: @feeds
   end
@@ -19,7 +19,7 @@ class FeedsController < ApplicationController
 
   # POST /feeds
   def create
-    @feed = Feed.new(feed_params)
+    @feed = Feed.new(feed_params.merge(user: current_user))
 
     if @feed.save
       render json: @feed, status: :created, location: @feed
@@ -46,7 +46,7 @@ class FeedsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_feed
-    @feed = Feed.find(params[:id])
+    @feed = Feed.where(user: current_user).find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.

@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  email: MyString
-  name: MyString
-  picture: MyString
+  id: auth0|5d27985fd5dc270e1c113e8a
+  email: john.doe@gmail.com
+  name: John Doe
+  picture: some_picture.jpg
 
 two:
-  email: MyString
-  name: MyString
-  picture: MyString
+  id: 2
+  email: henry.smith@gmail.com
+  name: Henry Smith
+  picture: some_picture2.jpg
