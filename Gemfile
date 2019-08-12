@@ -14,7 +14,7 @@ gem 'puma', '~> 3.11'
 # Linting and formatting
 gem 'active_model_serializers'
 gem 'bcrypt', '~> 3.1.7'
-gem 'dotenv-rails'
+gem 'dotenv-rails', groups: %i[development test]
 gem 'jwt'
 gem 'knock', '~> 2.0'
 gem 'minitest-hooks'
