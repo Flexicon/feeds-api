@@ -7,13 +7,14 @@ ruby '2.6.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use Postgres as the database for Active Record
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Linting and formatting
 gem 'active_model_serializers'
 gem 'bcrypt', '~> 3.1.7'
+gem 'dotenv-rails'
 gem 'jwt'
 gem 'knock', '~> 2.0'
 gem 'minitest-hooks'
