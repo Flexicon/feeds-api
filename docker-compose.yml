@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  db:
+    image: postgres:11
+    environment:
+      POSTGRES_DB: feeds_app
+      POSTGRES_USER: feeds
+      POSTGRES_PASSWORD: feeds_pass
+    ports:
+      - 5432:5432

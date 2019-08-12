@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_07_19_134720) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "feeds", force: :cascade do |t|
     t.string "url"
     t.string "name"
@@ -29,4 +32,5 @@ ActiveRecord::Schema.define(version: 2019_07_19_134720) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "feeds", "users"
 end
