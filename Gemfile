@@ -9,6 +9,8 @@ ruby '2.6.0'
 gem 'rails', '~> 5.2.3'
 # Use Postgres as the database for Active Record
 gem 'pg'
+# Use sqlite3 for the test database
+gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Linting and formatting
