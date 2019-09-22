@@ -13,8 +13,9 @@ gem 'pg'
 gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
+# Model serialization
+gem 'fast_jsonapi'
 # Linting and formatting
-gem 'active_model_serializers'
 gem 'bcrypt', '~> 3.1.7'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'jwt'

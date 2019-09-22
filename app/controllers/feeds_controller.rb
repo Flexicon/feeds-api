@@ -9,12 +9,12 @@ class FeedsController < ApplicationController
   def index
     @feeds = Feed.where(user: current_user.id).all
 
-    render json: @feeds
+    render json: serialize(@feeds)
   end
 
   # GET /feeds/1
   def show
-    render json: @feed
+    render json: serialize(@feed)
   end
 
   # POST /feeds
@@ -22,7 +22,7 @@ class FeedsController < ApplicationController
     @feed = Feed.new(feed_params.merge(user: current_user))
 
     if @feed.save
-      render json: @feed, status: :created, location: @feed
+      render json: serialize(@feed), status: :created, location: @feed
     else
       render json: @feed.errors, status: :unprocessable_entity
     end
@@ -31,7 +31,7 @@ class FeedsController < ApplicationController
   # PATCH/PUT /feeds/1
   def update
     if @feed.update(feed_params)
-      render json: @feed
+      render json: serialize(@feed)
     else
       render json: @feed.errors, status: :unprocessable_entity
     end
@@ -42,9 +42,14 @@ class FeedsController < ApplicationController
     @feed.destroy
   end
 
+  protected
+
+  def serialize(feeds)
+    super(feeds, FeedSerializer)
+  end
+
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_feed
     @feed = Feed.where(user: current_user).find(params[:id])
   end

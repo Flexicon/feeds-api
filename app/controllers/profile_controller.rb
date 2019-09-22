@@ -5,6 +5,6 @@ class ProfileController < ApplicationController
   before_action :authenticate_user
 
   def me
-    render json: current_user.to_json
+    render json: serialize(current_user, ProfileSerializer)
   end
 end

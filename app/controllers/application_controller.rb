@@ -9,6 +9,10 @@ class ApplicationController < ActionController::API
   # Stub for current_user magic method
   def current_user; end
 
+  def serialize(value, serializer)
+    serializer.new(value).serializable_hash
+  end
+
   private
 
   # Override of vendor Knock method in order to inject a CustomAuthToken
