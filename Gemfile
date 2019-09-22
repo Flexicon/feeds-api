@@ -9,8 +9,6 @@ ruby '2.6.0'
 gem 'rails', '~> 5.2.3'
 # Use Postgres as the database for Active Record
 gem 'pg'
-# Use sqlite3 for the test database
-gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Model serialization
@@ -45,6 +43,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  # Use sqlite3 for the test database
+  gem 'sqlite3'
 end
 
 group :development do
