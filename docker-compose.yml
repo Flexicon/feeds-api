@@ -9,3 +9,8 @@ services:
       POSTGRES_PASSWORD: feeds_pass
     ports:
       - 5432:5432
+
+  redis_cache:
+    image: redis
+    ports:
+      - 6379:6379

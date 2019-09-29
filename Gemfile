@@ -6,15 +6,17 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.3'
+gem 'rails', '~> 6.0.0'
 # Use Postgres as the database for Active Record
 gem 'pg'
-# Use sqlite3 as test database
-gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Model serialization
 gem 'fast_jsonapi'
+# Caching
+gem 'redis'
+# Asynchronous workers
+gem 'sidekiq'
 # Linting and formatting
 gem 'bcrypt', '~> 3.1.7'
 gem 'dotenv-rails', groups: %i[development test]
