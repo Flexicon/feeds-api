@@ -28,3 +28,6 @@
 
 # Env and secrets
 .env
+
+# IDE
+.idea/
