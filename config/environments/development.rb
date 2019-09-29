@@ -52,5 +52,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Setup redis url
-  ENV['REDISTOGO_URL'] = 'redis://username:password@my.host:6389'
+  ENV['REDISCLOUD_URL'] = 'redis://username:password@my.host:6389'
 end
