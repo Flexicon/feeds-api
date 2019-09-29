@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Handles Feed model serialization
-class FeedSerializer < ActiveModel::Serializer
-  attributes :id, :name, :url
+# Feed model serialization
+class FeedSerializer < AppSerializer
+  attributes :name, :url
 end

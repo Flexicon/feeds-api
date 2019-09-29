@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# Responsible for a general API health check
+# Responsible for general API health/sanity checking
 class PingController < ApplicationController
   def health_check
-    render json: { health: 'ok' }.to_json, status: :ok
+    render json: { health: 'ok' }, status: :ok
   end
 end

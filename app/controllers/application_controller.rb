@@ -9,6 +9,10 @@ class ApplicationController < ActionController::API
   # Stub for current_user magic method
   def current_user; end
 
+  def serialize(value, serializer)
+    serializer.new(value).serializable_hash
+  end
+
   private
 
   # Override of vendor Knock method in order to inject a CustomAuthToken
@@ -25,7 +29,7 @@ class ApplicationController < ActionController::API
           begin
             CustomAuthToken.new(token: token).entity_for(entity_class)
           rescue StandardError => e
-            handle_token_decoding_error(e)
+            handle_token_decode_error(e)
           end
         instance_variable_set(memoization_var_name, current)
       end
@@ -34,9 +38,9 @@ class ApplicationController < ActionController::API
   end
   # rubocop:enable Metrics/MethodLength
 
-  def handle_token_decoding_error(err)
-    puts "Error while decoding token: #{err.message}" unless Rails.env.test?
-    throw err if Rails.env.development? # Throw this error when debugging
+  def handle_token_decode_error(e)
+    puts "Error while decoding token: #{e.message}" unless Rails.env.test?
+    throw e if Rails.env.development? # Throw this error when debugging
   end
 
   def unauthorized_entity(_entity_name)
